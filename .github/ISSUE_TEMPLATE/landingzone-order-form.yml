@@ -1,0 +1,44 @@
+name: KLP Skywalker - Landing zone order form
+description: See https://confluence.klp.no/display/KAO/Administration+Guideline+-+How+to+order+a+new+landingzone for guideance
+title: "New KLP Azure Landingzone"
+labels: ["lz", "landingzone", "lz-order"]
+assignees:
+  - runehellem
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: checkboxes
+    id: newlz-managementgroup
+    attributes: 
+      label: What type of landingzone do you require
+      description: You may select more than one.
+      options:
+        - label: nonProd
+        - label: prod
+        - label: sandbox
+  - type: input
+    id: newlz-costcenter
+    attributes:
+      label: Cost center
+    validations:
+      required: true
+  - type: input
+    id: newlz-systemowner
+    attributes:
+      label: System owner 
+      value: "@klp.no"
+    validations:
+      required: true
+  - type: input
+    id: newlz-systemcontributers
+    attributes:
+      label: System contributors, comma separated list
+      value: "@klp.no"
+    validations:
+      required: true
+  - type: textarea
+    id: newlz-comments
+    attributes:
+      label: Comments    
