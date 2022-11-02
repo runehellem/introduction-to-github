@@ -27,6 +27,13 @@ jobs:
         id: parse
         uses: zentered/issue-forms-body-parser@v1.4.3
       - run: echo "${{ toJson(steps.parse.outputs.data)}}"
+      - name: Add new comment with json as code 
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            `"${{ toJson(steps.parse.outputs.data)}}`
+
 
           
   
