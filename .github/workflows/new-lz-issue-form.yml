@@ -5,14 +5,20 @@ on:
     types: [opened]
 
 jobs:
-  say-hello:
-    runs-on: ubuntu-latest
-    steps:
-      - name: return-hello
-        run: echo "Hello World! Comment id " + ${{ github.event.client_payload.github.payload.comment.id }}
-      - name: set-reaction-to-issue
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
-          reaction-type: hooray
+  add-comment:
+      if: github.event.label.name == 'help-wanted'
+      runs-on: ubuntu-latest
+      permissions:
+        issues: write
+      steps:
+        - name: return-hello
+          run: echo "Hello World! Comment id " + ${{ github.event.client_payload.github.payload.comment.id }}
+        - name: Add comment
+          uses: peter-evans/create-or-update-comment@v2
+          with:
+            issue-number: ${{ github.event.issue.number }}
+            body: |
+              This issue is available for anyone to work on. **Make sure to reference this issue in your pull request.** :sparkles: Thank you for your contribution! :sparkles:
+
+          
   
