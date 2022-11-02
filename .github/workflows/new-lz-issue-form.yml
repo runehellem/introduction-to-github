@@ -11,6 +11,7 @@ jobs:
       - name: return-hello
         run: echo "Hello World! Comment id " + ${{ github.event.client_payload.github.payload.comment.id }}
       - name: set-reaction-to-issue
+        uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ github.event.client_payload.github.payload.comment.id }}
           reaction-type: hooray
