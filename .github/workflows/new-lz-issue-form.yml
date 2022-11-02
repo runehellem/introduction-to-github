@@ -11,9 +11,9 @@ jobs:
       permissions:
         issues: write
       steps:
-        - name: return-hello
-          run: echo "Hello World! Comment id " + ${{ github.event.client_payload.github.payload.comment.id }}
-        - name: Add comment
+        - name: return-issue-number
+          run: echo "Hello World! Issue number " + ${{ github.event.issue.number }}
+        - name: add-comment-to-issue
           uses: peter-evans/create-or-update-comment@v2
           with:
             issue-number: ${{ github.event.issue.number }}
