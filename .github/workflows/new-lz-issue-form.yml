@@ -5,9 +5,9 @@ on:
     types: [opened]
 
 jobs:
-  my-job:
+  say-hello:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
+      - name: return-hello
         run: echo "Hello World!"
   
