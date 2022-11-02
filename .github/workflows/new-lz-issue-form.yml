@@ -12,7 +12,8 @@ jobs:
         issues: write
       steps:
         - name: return-issue-number
-          run: echo "Hello World! Issue number " + ${{ github.event.issue.number }}
+          run: |-
+            echo "Hello World! Issue number: "${{ github.event.issue.number }}
         - name: add-comment-to-issue
           uses: peter-evans/create-or-update-comment@v2
           with:
